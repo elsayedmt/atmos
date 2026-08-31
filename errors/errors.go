@@ -502,6 +502,7 @@ var (
 	ErrInvalidComponentSecrets                    = errors.New("invalid component secrets section")
 	ErrStoreIsSecret                              = errors.New("store is a secret store; use !secret instead of !store")
 	ErrInvalidComponentGenerate                   = errors.New("invalid component generate section")
+	ErrInvalidComponentFlags                      = errors.New("invalid component flags section")
 	ErrInvalidComponentAuth                       = errors.New("invalid component auth section")
 	ErrInvalidComponentProvision                  = errors.New("invalid component provision section")
 	ErrInvalidComponentMetadata                   = errors.New("invalid component metadata section")
@@ -523,6 +524,7 @@ var (
 	ErrInvalidComponentOverridesRequiredVersion   = errors.New("invalid component overrides required_version attribute")
 	ErrInvalidComponentOverridesHooks             = errors.New("invalid component overrides hooks section")
 	ErrInvalidComponentOverridesGenerate          = errors.New("invalid component overrides generate section")
+	ErrInvalidComponentOverridesFlags             = errors.New("invalid component overrides flags section")
 	ErrInvalidComponentAttribute                  = errors.New("invalid component attribute")
 	ErrInvalidComponentMetadataComponent          = errors.New("invalid component metadata.component attribute")
 	ErrInvalidSpaceLiftSettings                   = errors.New("invalid spacelift settings section")
@@ -570,6 +572,8 @@ var (
 	ErrGeneratorValidation   = errors.New("generator validation failed")
 	ErrGenerationFailed      = errors.New("generation failed")
 	ErrGeneratorWriteFailed  = errors.New("failed to write generated file")
+	ErrGeneratorRemoveFailed = errors.New("failed to remove generated file")
+	ErrGeneratedNotRegular   = errors.New("generated file path is not a regular file")
 	ErrMissingWorkingDir     = errors.New("working directory is required")
 	ErrMissingProviderSource = errors.New("required_providers entry missing 'source' field")
 
@@ -670,6 +674,7 @@ var (
 	ErrInvalidTerraformEnv                = errors.New("invalid terraform env section")
 	ErrInvalidTerraformProviders          = errors.New("invalid terraform providers section")
 	ErrInvalidTerraformGenerateSection    = errors.New("invalid terraform generate section")
+	ErrInvalidTerraformFlagsSection       = errors.New("invalid terraform flags section")
 	ErrInvalidTerraformBackendType        = errors.New("invalid terraform backend_type")
 	ErrMissingTerraformBackendType        = errors.New("'backend_type' is missing for the component")
 	ErrMissingTerraformBackendConfig      = errors.New("'backend' config is missing for the component")
@@ -905,6 +910,9 @@ var (
 	ErrReadDirectory       = errors.New("failed to read directory")
 	ErrComputeRelativePath = errors.New("failed to compute relative path")
 	ErrFileOperation       = errors.New("file operation failed")
+
+	// Archive extraction safety errors (pkg/filesystem).
+	ErrArchiveEntryEscapesDest = errors.New("archive entry escapes destination directory")
 
 	// OCI/Container image errors.
 	ErrCreateTempDirectory   = ErrCreateTempDir // Alias to avoid duplicate sentinels
